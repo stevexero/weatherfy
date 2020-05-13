@@ -72,3 +72,10 @@ body {
 .container > div:nth-of-type(4) .small-box {
   background: #7fe2d6;
 }
+
+.container > div:nth-of-type(6) .small-box {
+  height: 100px;
+  width: 160px;
+  border-radius: 0;
+  background: linear-gradient(90deg, #21313e, 70%, #607f9f);
+}
