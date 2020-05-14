@@ -1,8 +1,6 @@
 // Init geolocation
 const geoLocation = new GeoLocation();
 
-// geoLocation.getLocation().then(res => console.log(res));
-
 // Init UI
 const ui = new UI();
 
@@ -11,7 +9,14 @@ document.addEventListener('DOMContentLoaded', getWeather);
 
 // Get weather function
 function getWeather() {
-  geoLocation.getLocation().then(res => ui.paint(res));
+  // Initialize weather based on geolocation
+  geoLocation.getLocation().then(res => {
+    const weatherByCoords = new WeatherByCoords(res.lat, res.long);
+    weatherByCoords.getWeatherByCoords().then(result => {
+      ui.paint(result);
+      console.log(result);
+    });
+  });
 }
 
 // tech used:

@@ -21,14 +21,16 @@
           <p>ºF</p>
         </div>
         <div class="location-button">
-          <button>Las Vegas</button>
+          <button id="city-name">Las Vegas</button>
         </div>
 
-        <p class="high-low-temp">68º / 74º</p>
+        <p class="high-low-temp">
+          <span id="low"></span> / <span id="high"></span>
+        </p>
 
         <div class="tempurature-box">
-          <p>70º</p>
-          <p>feels like 69º</p>
+          <p id="tempurature"></p>
+          <p>feels like: <span id="feels-like"></span></p>
         </div>
       </div>
 
@@ -73,12 +75,7 @@
       </div>
     </div>
 
-    <!-- Coords Test -->
-    <!-- <p>latitude: <span id="latitude">&deg;</span></p>
-    <p>longitude: <span id="longitude">&deg;</span></p> -->
-    <p>latitude: <span id="lat"></span></p>
-    <p>longitude: <span id="long"></span></p>
-
+    <script src="weatherByCoords.js"></script>
     <script src="geoLocation.js"></script>
     <script src="ui.js"></script>
     <script src="app.js"></script>
