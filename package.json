@@ -1,0 +1,22 @@
+{
+  "name": "theweather",
+  "version": "1.0.0",
+  "description": "just a simple weather app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steveanthony999/weatherfy.git"
+  },
+  "author": "Steven Woodward",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/steveanthony999/weatherfy/issues"
+  },
+  "homepage": "https://github.com/steveanthony999/weatherfy#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
