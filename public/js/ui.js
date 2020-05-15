@@ -10,6 +10,7 @@ class UI {
     this.windDirection = document.getElementById('wind-direction');
     this.sunrise = document.getElementById('sunrise');
     this.sunset = document.getElementById('sunset');
+    this.imgIcon = document.getElementById('img-icon');
   }
 
   paint(weather) {
@@ -56,15 +57,9 @@ class UI {
     }
 
     function getCity(lat, long) {
-      const key = '';
-
       const xhr = new XMLHttpRequest();
 
-      xhr.open(
-        'GET',
-        `http://www.mapquestapi.com/geocoding/v1/reverse?key=${key}&location=${lat},${long}`,
-        true
-      );
+      xhr.open('GET', `reversegeocoding/${lat},${long}`, true);
 
       xhr.onload = function() {
         if (this.status === 200) {
@@ -77,6 +72,76 @@ class UI {
       xhr.send();
     }
 
+    function getQuoteOfDay() {
+      const xhr = new XMLHttpRequest();
+
+      xhr.open('GET', 'http://quotes.rest/qod.json?category=inspire', true);
+
+      xhr.onload = function() {
+        if (this.status === 200) {
+          const response = JSON.parse(this.responseText);
+
+          document.getElementById('quote').innerHTML =
+            '"' + response.contents.quotes[0].quote + '"';
+          document.getElementById('author').innerHTML =
+            '- ' + response.contents.quotes[0].author;
+        }
+      };
+      xhr.send();
+    }
+
+    getQuoteOfDay();
+
+    function clockTime() {
+      var today = new Date();
+      var h = today.getHours();
+      var m = today.getMinutes();
+      var ampm = h >= 12 ? ' pm' : ' am';
+      h = h % 12;
+      h = h ? h : 12;
+
+      m = checkTime(m);
+      document.getElementById('clock').innerHTML = h + ':' + m + ampm;
+      var t = setTimeout(clockTime, 500);
+
+      var greetingHours = today.getHours();
+
+      if (greetingHours >= 4 && greetingHours < 12) {
+        document.getElementById('greeting').innerHTML = 'Good Morning';
+      } else if (greetingHours >= 12 && greetingHours <= 17) {
+        document.getElementById('greeting').innerHTML = 'Good Afternoon';
+      } else {
+        document.getElementById('greeting').innerHTML = 'Good Evening';
+      }
+
+      const months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+      ];
+
+      document.getElementById('month').innerHTML = months[today.getMonth()];
+      document.getElementById('date').innerHTML = today.getDate();
+    }
+
+    function checkTime(x) {
+      if (x < 10) {
+        x = '0' + x;
+      }
+      return x;
+    }
+
+    clockTime();
+
     getCity(weather.lat, weather.lon);
     this.temp.innerHTML = Math.round(weather.current.temp) + 'º';
     this.feelsLike.innerHTML = Math.round(weather.current.feels_like) + 'º';
@@ -84,9 +149,10 @@ class UI {
     this.high.innerHTML = Math.round(weather.daily[0].temp.max) + 'º';
     this.humidity.innerHTML = weather.current.humidity + '%';
     this.skies.innerHTML = weather.current.weather[0].description;
-    this.wind.innerHTML = Math.round(weather.current.wind_speed) + ' mph - ';
+    this.wind.innerHTML = Math.round(weather.current.wind_speed);
     this.windDirection.innerHTML = compass(weather.current.wind_deg);
     this.sunrise.innerHTML = timeStamp(weather.current.sunrise);
     this.sunset.innerHTML = timeStamp(weather.current.sunset);
+    this.imgIcon.innerHTML = `<img src='http://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png'>`;
   }
 }

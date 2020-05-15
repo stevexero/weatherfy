@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Weatherfy</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sky Box -->
+      <div class="front">
+        <p>condition</p>
+        <div class="small-box">
+          <div id="img-icon"></div>
+        </div>
+        <p><span id="skies"></span></p>
+      </div>
+
+      <!-- Location and Temp Box -->
+      <div>
+        <div class="tempurature-type">
+          <p>ºF</p>
+          <label class="switch">
+            <input type="checkbox" id="toggler" />
+            <span class="slider round"></span>
+          </label>
+          <p>ºC</p>
+        </div>
+        <div class="location-button">
+          <button id="city-name"></button>
+        </div>
+
+        <p class="high-low-temp">
+          <span id="low"></span> / <span id="high"></span>
+        </p>
+
+        <div class="tempurature-box">
+          <p id="tempurature"></p>
+          <p>feels like: <span id="feels-like"></span></p>
+        </div>
+      </div>
+
+      <!-- Clock Box -->
+      <div>
+        <div class="date-and-day">
+          <div class="greeting-and-date">
+            <div class="greeting" id="greeting"><p></p></div>
+            <div class="date">
+              <p id="date"></p>
+              <p id="month"></p>
+            </div>
+          </div>
+          <div class="clock">
+            <p id="clock"></p>
+          </div>
+          <div class="quote">
+            <p id="quote">Test Quote for now</p>
+            <p id="author">- test author</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Humidity Box -->
+      <div>
+        <p>humidity</p>
+        <div class="small-box">
+          <i class="fas fa-tint"></i>
+        </div>
+        <p><span id="humidity"></span></p>
+      </div>
+
+      <!-- Wind Box -->
+      <div>
+        <p>wind</p>
+        <div class="small-box">
+          <i class="fas fa-wind"></i>
+        </div>
+        <p>
+          <span id="wind"></span> <span id="wind-metric">mph - </span>
+          <span id="wind-direction"></span>
+        </p>
+      </div>
+
+      <!-- Sunrise / Sunset Box -->
+      <div>
+        <img src="./images/sun.png" alt="sunup" class="sun" />
+        <div class="small-box">
+          <p><span id="sunrise"></span> am / <span id="sunset"></span> pm</p>
+        </div>
+        <img src="./images/sun.png" alt="sundown" class="sun sundown" />
+      </div>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/5a45150824.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/weatherByCoords.js"></script>
+    <script src="js/geoLocation.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
