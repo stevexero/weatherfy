@@ -281,3 +281,130 @@ input:checked + .slider:before {
 .quote #author {
   text-align: right;
 }
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  body {
+    background: #262453;
+  }
+
+  .container {
+    max-width: 768px;
+    height: 100vh;
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .container > div:nth-of-type(1) {
+    grid-row: 1 / 1;
+  }
+
+  .container > div:nth-of-type(2) {
+    grid-row: 1 / 1;
+  }
+
+  .container > div:nth-of-type(3) {
+    grid-column: 1 / 3;
+    padding: 10px 20px;
+    text-align: center;
+  }
+
+  .container > div:nth-of-type(6) {
+    grid-column: 1 / 3;
+  }
+
+  .container > div:nth-of-type(1) .small-box,
+  .container > div:nth-of-type(4) .small-box,
+  .container > div:nth-of-type(5) .small-box,
+  .container > div:nth-of-type(6) .small-box,
+  .small-box {
+    background: rgba(0, 0, 0, 0);
+    box-shadow: none;
+  }
+
+  .tempurature-type {
+    display: none;
+  }
+
+  .location-button button {
+    display: none;
+  }
+
+  .high-low-temp {
+    display: none;
+  }
+
+  .tempurature-box {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    border-radius: 0;
+    box-shadow: none;
+    /* display: flex; */
+    /* flex-direction: column; */
+    justify-content: space-evenly;
+    /* align-items: center; */
+  }
+
+  .tempurature-box p {
+    color: #fff;
+  }
+
+  .container > div:nth-of-type(4),
+  .container > div:nth-of-type(5),
+  .tempurature-box p,
+  .front p {
+    font-size: 0.75rem;
+  }
+
+  .container > div:nth-of-type(4),
+  .container > div:nth-of-type(5),
+  .front p {
+    margin-bottom: 10px;
+  }
+
+  #condition,
+  #humidity-heading,
+  #wind-heading {
+    display: none;
+  }
+
+  #date,
+  #month,
+  #clock {
+    display: none;
+  }
+
+  .container > div:nth-of-type(4) .small-box {
+    color: #262453;
+  }
+
+  .date-and-day {
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .date-and-day .greeting-and-date {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  .quote #author {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .sun {
+    margin-bottom: -40px;
+  }
+
+  .sundown {
+    margin-top: -40px;
+  }
+}
