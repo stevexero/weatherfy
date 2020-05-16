@@ -73,21 +73,18 @@ class UI {
     }
 
     function getQuoteOfDay() {
-      const xhr = new XMLHttpRequest();
+      const random = Math.floor(Math.random() * 1600);
 
-      xhr.open('GET', 'http://quotes.rest/qod.json?category=inspire', true);
-
-      xhr.onload = function() {
-        if (this.status === 200) {
-          const response = JSON.parse(this.responseText);
-
+      fetch('https://type.fit/api/quotes')
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
           document.getElementById('quote').innerHTML =
-            '"' + response.contents.quotes[0].quote + '"';
+            '"' + data[random].text + '"';
           document.getElementById('author').innerHTML =
-            '- ' + response.contents.quotes[0].author;
-        }
-      };
-      xhr.send();
+            '- ' + data[random].author;
+        });
     }
 
     getQuoteOfDay();
